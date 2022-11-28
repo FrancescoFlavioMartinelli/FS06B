@@ -1,0 +1,7 @@
+<h1>Lista completati</h1>
+<ul>
+  <li *ngFor="let element of todos">
+    {{element.id}} - {{element.title}} - {{element.completed}}
+    <button>{{getTestoPulsante(element)}}</button>
+  </li>
+</ul>
