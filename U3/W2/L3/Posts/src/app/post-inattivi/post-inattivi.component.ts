@@ -13,7 +13,17 @@ export class PostInattiviComponent implements OnInit {
   constructor(private postSrv:PostService) { }
 
   ngOnInit(): void {
-    this.postSrv.getPostFiltrati(false).then(res=>this.posts=res)
+    this.posts = this.postSrv.getPostFiltrati(false)
+  }
+
+  attiva(id:number) {
+    this.postSrv.attivaDB(id).then(ok=>{
+      if(ok) this.posts = this.posts.filter(e=>!(e.id==id))
+      else console.log("ERRORE THEN");
+      
+    })
+    // this.postSrv.attivaService(id)
+    // this.posts = this.posts.filter(e=>!(e.id==id))
   }
 
 }

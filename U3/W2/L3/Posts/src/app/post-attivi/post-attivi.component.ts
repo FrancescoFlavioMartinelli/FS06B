@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../post';
-import {getAllPosts, PostService} from './../post.service'
+import { PostService} from './../post.service'
 
 @Component({
   selector: 'app-post-attivi',
@@ -15,16 +15,11 @@ export class PostAttiviComponent implements OnInit {
   constructor(private postSrv:PostService) { }
 
   ngOnInit(): void {
-    // getAllPosts().then((res)=>{
-    //   this.posts = res
-    // })
+    // this.postSrv.getPostFiltrati(true).then(res=>this.posts=res)
+    this.posts = this.postSrv.getPostFiltrati(true)
+  }
 
-    // this.postSrv.getAllPosts().then((res)=>{
-    //   this.posts = res
-    // })
+  disattiva(id:number) {
 
-    // this.posts = this.postSrv.getActivePost()
-
-    this.postSrv.getPostFiltrati(true).then(res=>this.posts=res)
   }
 }
