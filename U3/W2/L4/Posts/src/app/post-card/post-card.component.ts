@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Post } from '../post';
 
 @Component({
@@ -10,10 +10,15 @@ export class PostCardComponent implements OnInit {
 
 
   @Input() p!:Post
+  @Output() eliminaEvent = new EventEmitter()
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  elimina(){
+    this.eliminaEvent.emit()
   }
 
 }

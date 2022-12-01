@@ -8,7 +8,9 @@ import { PostService } from './post.service';
 })
 export class AppComponent implements OnInit {
   title = 'Routing';
+  
   constructor(private postSrv: PostService){}
+  
   ngOnInit(): void {
     this.postSrv.fetchData()
   }

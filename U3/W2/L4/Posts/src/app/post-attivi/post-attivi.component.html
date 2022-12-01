@@ -1,7 +1,7 @@
 <!-- <div *ngFor="let post of posts">
   <div class="card" *ngIf="!post.active"> -->
-<div class="card" *ngFor="let postAt of posts">
-      <app-post-card [p]="postAt">
+<div class="card" *ngFor="let postAt of postsAttivi">
+      <app-post-card [p]="postAt" (eliminaEvent)="elimina(postAt.id)"> 
         <a class="btn btn-danger" (click)="disattiva(postAt.id)">Disattiva</a>
       </app-post-card>
 </div>
