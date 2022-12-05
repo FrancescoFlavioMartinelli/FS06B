@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Subject, tap } from 'rxjs';
+import { catchError, ReplaySubject, Subject, tap } from 'rxjs';
 import { Photo } from './photo';
 
 @Injectable({
@@ -8,7 +8,10 @@ import { Photo } from './photo';
 })
 export class PhotoService {
 
-  photoSubj = new Subject(); //oggetto con metodo .next(), attiva i subscriber
+  // photoSubj = new Subject(); //oggetto con metodo .next(), attiva i subscriber
+  photoSubj = new ReplaySubject(); //uguale alla subjext ma quando viene fatto un subscribe viene passato in automatico il valore dell'ultimo next
+  //senza questa classe se avessimo cambiato pagina tornando su quella in cui avveniva la lettura avremmo avuto un subscribe che aspettava il prossimo next, ma la chiamata http era stata fatta una volta sola e non avrebbe più mandato next
+  //usando ReplaySubject (o BehaviourSubject che però va creato con un valore iniziale) l'ultimo valore è passato appena viene fatto il subscribe (e quindi la funzione nel subscribe parte subito se il next() era già stato eseguito precedentemetne)
   photoObs = this.photoSubj.asObservable(); //oggetto con metodo .subscribe(), imposta cosa fare quando riceve un next
 
   getObs() {
