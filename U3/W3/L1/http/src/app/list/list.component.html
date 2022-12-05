@@ -1,0 +1,40 @@
+<app-likes></app-likes>
+
+<div class="alert alert-primary" role="alert" *ngIf="error">
+    Error
+</div>
+
+<div class="container" *ngIf="photos != undefined; else load">
+    <div class="row row-cols-3">
+        <div class="col" *ngFor="let p of photos">
+            <app-card [photo]="p"></app-card>
+        </div>
+    </div>
+</div>
+
+<ng-template #load>
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-border text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-border text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-border text-warning" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-border text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+</ng-template>

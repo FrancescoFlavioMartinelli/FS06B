@@ -1,0 +1,9 @@
+<div class="card" style="width: 18rem;" *ngIf="photo != undefined">
+    <img [src]="photo.thumbnailUrl" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{photo.id}} - {{photo.title}}</h5>
+        <a class="btn btn-success" (click)="like()" *ngIf="!liked">Like</a>
+        <a class="btn btn-success" (click)="dislike()" *ngIf="liked">Dislike</a>
+        <a class="btn btn-danger" (click)="delete()" [ngClass]="{'disabled': error}">Delete</a>
+    </div>
+</div>
