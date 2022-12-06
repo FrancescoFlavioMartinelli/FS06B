@@ -1,0 +1,19 @@
+<form #f="ngForm" (ngSubmit)="submit(f)" class="row">
+
+    <div class="col-12">
+        <label class="form-label">First name</label>
+        <input type="text" class="form-control" [ngClass]="getValid(nome)" ngModel name="nome" #nome="ngModel" minlength="3" required>
+        <div *ngIf="nome.touched && nome.errors">
+            <div class="" *ngIf="nome.errors['minlength']">
+                Minimo 3 caratteri
+            </div>
+            <div class="" *ngIf="nome.errors['required']">
+                Richiesto
+            </div>
+
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [ngClass]="{'disabled': f.invalid}">INVIA</button>
+
+</form>

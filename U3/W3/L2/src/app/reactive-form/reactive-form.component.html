@@ -1,0 +1,25 @@
+<form [formGroup]="f">
+
+    <div class="col-12">
+        <label class="form-label">First name</label>
+        <input type="text" class="form-control" formControlName="nome">
+        <div *ngIf="getFormControl('nome').touched && getFormControlErrors('nome')">
+            <div class="" *ngIf="getFormControlErrors('nome')!['minlength']">
+                Minimo 3 caratteri
+            </div>
+            <div class="" *ngIf="getFormControlErrors('nome')!['required']">
+                Richiesto
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12">
+        Poteri <button class="btn btn-primary" (click)="aggiugninPotere()">aggiungi potere</button>
+        <div *ngFor="let p of getFormArray('poteri'); let i = index">
+            <input type="text" [formControlName]="i">
+        </div>
+    </div>
+
+
+</form>
