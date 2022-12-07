@@ -17,7 +17,7 @@
     <div class="col-12">
         Poteri <button class="btn btn-primary" (click)="aggiugninPotere()">aggiungi potere</button>
         <div *ngFor="let p of getFormArray('poteri'); let i = index">
-            <input type="text" [formControlName]="i">
+            <input type="text" [formControlName]="an">
         </div>
     </div>
 

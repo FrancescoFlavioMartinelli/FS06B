@@ -7,9 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
-  },{
+  },
+  {
     path: 'photos',
-    component: ListComponent
+    // component: ListComponent
+    loadChildren: ()=>import('./list/list.module').then(m=>m.ListModule)
   }
 ];
 
